@@ -10,8 +10,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Easy Calculator'),
+      ),
+      body: const Center(
         child: Text('Calculator'),
       ),
     );
