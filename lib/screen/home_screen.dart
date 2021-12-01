@@ -12,22 +12,23 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textControllerOne = TextEditingController();
   TextEditingController textControllerTwo = TextEditingController();
 
-  late num number1, number2, result = 0;
+  late double numberOne, numberTwo, result;
 
   mathFunction(String mathFuntion) {
     if (textControllerTwo != '0') {
-      number1 = num.parse(textControllerOne.text);
-      number2 = num.parse(textControllerTwo.text);
+      numberOne = double.tryParse(textControllerOne.text)!;
+
+      numberTwo = double.tryParse(textControllerTwo.text)!;
 
       switch (mathFuntion) {
         case 'gather':
-          return result = number1 + number2;
+          return result = numberOne + numberTwo;
         case 'interest':
-          return result = number1 - number2;
+          return result = numberOne - numberTwo;
         case 'multiply':
-          return result = number1 * number2;
+          return result = numberOne * numberTwo;
         case 'plenty':
-          return result = number1 + number2;
+          return result = numberOne + numberTwo;
       }
     } else {
       return 'Number cannot be divided by 0';
