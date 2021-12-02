@@ -14,13 +14,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late double numberOne, numberTwo, result;
 
-  mathFunction(String mathFuntion) {
+  mathFunction(String text) {
     if (textControllerTwo != '0') {
       numberOne = double.tryParse(textControllerOne.text)!;
-
       numberTwo = double.tryParse(textControllerTwo.text)!;
 
-      switch (mathFuntion) {
+      switch (text) {
         case 'gather':
           return result = numberOne + numberTwo;
         case 'interest':
@@ -28,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         case 'multiply':
           return result = numberOne * numberTwo;
         case 'plenty':
-          return result = numberOne + numberTwo;
+          return result = numberOne / numberTwo;
       }
     } else {
       return 'Number cannot be divided by 0';
