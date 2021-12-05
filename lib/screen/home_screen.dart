@@ -12,27 +12,29 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textControllerOne = TextEditingController();
   TextEditingController textControllerTwo = TextEditingController();
 
-  late double numberOne, numberTwo, result;
+  num numberOne = 0.0, numberTwo = 0.0;
+  num result = 0.0;
 
-  mathFunction(String text) {
+  String mathFunction(String text) {
     if (textControllerTwo != '0') {
-      numberOne = double.tryParse(textControllerOne.text)!;
-      numberTwo = double.tryParse(textControllerTwo.text)!;
+      num numberOne = num.tryParse(textControllerOne.text) ?? 0;
+      num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
 
       switch (text) {
-        case 'gather':
-          return result = numberOne + numberTwo;
+        case 'collection':
+          return (numberOne + numberTwo).toString();
         case 'interest':
-          return result = numberOne - numberTwo;
+          return (numberOne - numberTwo).toString();
         case 'multiply':
-          return result = numberOne * numberTwo;
-        case 'plenty':
-          return result = numberOne / numberTwo;
+          return (numberOne * numberTwo).toString();
+        case 'divided':
+          return (numberOne / numberTwo).toString();
+        default:
+          return "ERR";
       }
     } else {
       return 'Number cannot be divided by 0';
     }
-    setState(() {});
   }
 
   @override
@@ -50,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Center(
                 child: Text(
-                  'Result: $result',
+                  'Result: ${result.toString()}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
@@ -67,24 +69,44 @@ class _HomeScreenState extends State<HomeScreen> {
               const CustomSizedBoxHeight(),
               Row(children: [
                 ElevatedButton(
-                  onPressed: mathFunction('gather'),
+                  onPressed: () {
+                    mathFunction('plus');
+                    setState(() {
+                      debugPrint('$result');
+                    });
+                  },
                   child: const Text('Topla'),
                 ),
                 const CustomSizedBoxWidth(),
                 ElevatedButton(
-                  onPressed: mathFunction('interest'),
+                  onPressed: () {
+                    mathFunction('interest');
+                    setState(() {
+                      debugPrint('$result');
+                    });
+                  },
                   child: const Text('Çıkar'),
                 )
               ]),
               const CustomSizedBoxHeight(),
               Row(children: [
                 ElevatedButton(
-                  onPressed: mathFunction('multiply'),
+                  onPressed: () {
+                    mathFunction('multiply');
+                    setState(() {
+                      debugPrint('$result');
+                    });
+                  },
                   child: const Text('Çarp'),
                 ),
                 const CustomSizedBoxWidth(),
                 ElevatedButton(
-                  onPressed: mathFunction('plenty'),
+                  onPressed: () {
+                    mathFunction('plenty');
+                    setState(() {
+                      debugPrint('$result');
+                    });
+                  },
                   child: const Text('Böl'),
                 ),
               ]),
