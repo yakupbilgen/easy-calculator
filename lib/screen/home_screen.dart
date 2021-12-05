@@ -69,16 +69,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Easy Calculator'),
       ),
       body: Container(
         margin: const EdgeInsets.all(20),
-        child: Center(
+        child: Container(
+          width: deviceSize.width,
+          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: Text(
@@ -97,29 +100,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 keyboardType: TextInputType.number,
               ),
               const CustomSizedBoxHeight(),
-              Row(children: [
-                ElevatedButton(
-                  onPressed: numPlus,
-                  child: const Text('Topla'),
-                ),
-                const CustomSizedBoxWidth(),
-                ElevatedButton(
-                  onPressed: numInterest,
-                  child: const Text('Çıkar'),
-                )
-              ]),
+              Row(
+                children: [
+                  SizedBox(
+                    width: (deviceSize.width / 2) - 50,
+                    child: ElevatedButton(
+                      onPressed: numPlus,
+                      child: const Text('Topla'),
+                    ),
+                  ),
+                  const CustomSizedBoxWidth(),
+                  SizedBox(
+                    width: (deviceSize.width / 2) - 50,
+                    child: ElevatedButton(
+                      onPressed: numInterest,
+                      child: const Text('Çıkar'),
+                    ),
+                  )
+                ],
+              ),
               const CustomSizedBoxHeight(),
-              Row(children: [
-                ElevatedButton(
-                  onPressed: numMultiply,
-                  child: const Text('Çarp'),
-                ),
-                const CustomSizedBoxWidth(),
-                ElevatedButton(
-                  onPressed: numDivided,
-                  child: const Text('Böl'),
-                ),
-              ]),
+              Row(
+                children: [
+                  SizedBox(
+                    width: (deviceSize.width / 2) - 50,
+                    child: ElevatedButton(
+                      onPressed: numMultiply,
+                      child: const Text('Çarp'),
+                    ),
+                  ),
+                  const CustomSizedBoxWidth(),
+                  SizedBox(
+                    width: (deviceSize.width / 2) - 50,
+                    child: ElevatedButton(
+                      onPressed: numDivided,
+                      child: const Text('Böl'),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
