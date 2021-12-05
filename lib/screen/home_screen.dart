@@ -13,8 +13,9 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textControllerTwo = TextEditingController();
 
   num numberOne = 0.0, numberTwo = 0.0;
-  num result = 0.0;
+  var result;
 
+  //codes are not working correctly
   String mathFunction(String text) {
     if (textControllerTwo != '0') {
       num numberOne = num.tryParse(textControllerOne.text) ?? 0;
@@ -35,6 +36,31 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       return 'Number cannot be divided by 0';
     }
+  }
+
+  numPlus() {
+    num numberOne = num.tryParse(textControllerOne.text) ?? 0;
+    num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
+    result = numberOne + numberTwo;
+  }
+
+  numInterest() {
+    num numberOne = num.tryParse(textControllerOne.text) ?? 0;
+    num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
+    result = numberOne - numberTwo;
+  }
+
+  numMultiply() {
+    num numberOne = num.tryParse(textControllerOne.text) ?? 0;
+    num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
+    result = numberOne * numberTwo;
+  }
+
+  numDivided() {
+    num numberOne = num.tryParse(textControllerOne.text) ?? 0;
+    num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
+    if (numberTwo != 0) result = numberOne / numberTwo;
+    if (numberTwo == 0) result = 'Number cannot be divided by 0';
   }
 
   @override
@@ -69,44 +95,24 @@ class _HomeScreenState extends State<HomeScreen> {
               const CustomSizedBoxHeight(),
               Row(children: [
                 ElevatedButton(
-                  onPressed: () {
-                    mathFunction('plus');
-                    setState(() {
-                      debugPrint('$result');
-                    });
-                  },
+                  onPressed: numPlus,
                   child: const Text('Topla'),
                 ),
                 const CustomSizedBoxWidth(),
                 ElevatedButton(
-                  onPressed: () {
-                    mathFunction('interest');
-                    setState(() {
-                      debugPrint('$result');
-                    });
-                  },
+                  onPressed: numInterest,
                   child: const Text('Çıkar'),
                 )
               ]),
               const CustomSizedBoxHeight(),
               Row(children: [
                 ElevatedButton(
-                  onPressed: () {
-                    mathFunction('multiply');
-                    setState(() {
-                      debugPrint('$result');
-                    });
-                  },
+                  onPressed: numMultiply,
                   child: const Text('Çarp'),
                 ),
                 const CustomSizedBoxWidth(),
                 ElevatedButton(
-                  onPressed: () {
-                    mathFunction('plenty');
-                    setState(() {
-                      debugPrint('$result');
-                    });
-                  },
+                  onPressed: numDivided,
                   child: const Text('Böl'),
                 ),
               ]),
