@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textControllerOne = TextEditingController();
   TextEditingController textControllerTwo = TextEditingController();
 
-  num numberOne = 0.0, numberTwo = 0.0;
+  late num numberOne, numberTwo;
   var result;
 
   //codes are not working correctly
@@ -42,18 +42,21 @@ class _HomeScreenState extends State<HomeScreen> {
     num numberOne = num.tryParse(textControllerOne.text) ?? 0;
     num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
     result = numberOne + numberTwo;
+    setState(() {});
   }
 
   numInterest() {
     num numberOne = num.tryParse(textControllerOne.text) ?? 0;
     num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
     result = numberOne - numberTwo;
+    setState(() {});
   }
 
   numMultiply() {
     num numberOne = num.tryParse(textControllerOne.text) ?? 0;
     num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
     result = numberOne * numberTwo;
+    setState(() {});
   }
 
   numDivided() {
@@ -61,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
     num numberTwo = num.tryParse(textControllerTwo.text) ?? 0;
     if (numberTwo != 0) result = numberOne / numberTwo;
     if (numberTwo == 0) result = 'Number cannot be divided by 0';
+    setState(() {});
   }
 
   @override
